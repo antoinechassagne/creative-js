@@ -23,13 +23,13 @@ function generate() {
         var angulo = 360 / total * index * Math.PI / 180;
         var hue = angulo / (Math.PI * 2) * 360;
         var col = 'hsl(' + hue + ',90%, 50%)';
-        var dx = 250 + Math.cos(angulo) * 200;
-        var dy = 250 + Math.sin(angulo) * 200;
+        var dx = 250 + Math.cos(angulo) * 10*(1+index%10);
+        var dy = 250 + Math.sin(angulo) * 10*(1+index%10);
         // generation
         var part = {
             posx: 250,
             posy: 250,
-            vit: 1 + Math.random() * 50,
+            vit: 1 + Math.random() * 100,
             destx: dx,
             desty: dy,
             o_destx: dx,
@@ -56,7 +56,7 @@ function loop() {
         var originDistX = currentpart.o_destx - currentpart.posx;
         var originDistY = currentpart.o_desty - currentpart.posy;
         var originDistance = Math.sqrt((originDistX * originDistX) + (originDistY * originDistY));
-        var d = 2 / (1 + originDistance / 100);
+        var d = 1 / (1 + originDistance / 100);
 
         // affichage
         c.fillStyle = currentpart.couleur;
